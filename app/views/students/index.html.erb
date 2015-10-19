@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Number</th>
       <th>First</th>
       <th>Last</th>
@@ -14,8 +15,9 @@
   </thead>
 
   <tbody>
-    <% @students.each do |student| %>
+    <% @students.each.with_index(1) do |student, index| %>
       <tr>
+	<td align="right"><%= index %>.</td>
         <td><%= student.number %></td>
         <td><%= student.first %></td>
         <td><%= student.last %></td>

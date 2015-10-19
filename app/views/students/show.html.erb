@@ -30,5 +30,10 @@
   <%= @student.username %>
 </p>
 
+<p>
+Created at <%= @student.created_at %>.
+Updated at <%= @student.updated_at %>.
+</p>
+
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
