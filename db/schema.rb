@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917142606) do
+ActiveRecord::Schema.define(version: 20151019164706) do
+
+  create_table "marks", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "task_id"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "marks", ["student_id"], name: "index_marks_on_student_id"
+  add_index "marks", ["task_id"], name: "index_marks_on_task_id"
 
   create_table "students", force: true do |t|
     t.string   "number"
@@ -20,6 +31,14 @@ ActiveRecord::Schema.define(version: 20150917142606) do
     t.string   "status"
     t.text     "comment"
     t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string   "name"
+    t.date     "date"
+    t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :marks
+
+  resources :tasks
+
   resources :students
 
   # The priority is based upon order of creation: first created -> highest priority.

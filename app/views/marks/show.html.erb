@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @mark.student %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @mark.task %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @mark.score %>
+</p>
+
+<%= link_to 'Edit', edit_mark_path(@mark) %> |
+<%= link_to 'Back', marks_path %>
