@@ -4,8 +4,10 @@ one:
   name: MyString
   date: 2015-10-19
   points: 1
+  number: 1
 
 two:
   name: MyString
   date: 2015-10-19
   points: 1
+  number: 2

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019164706) do
+ActiveRecord::Schema.define(version: 20151020121344) do
 
   create_table "marks", force: true do |t|
     t.integer  "student_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20151019164706) do
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number"
   end
 
 end

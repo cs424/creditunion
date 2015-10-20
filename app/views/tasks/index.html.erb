@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Number</th>
       <th>Date</th>
       <th>Points</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.name %></td>
+        <td><%= task.number %></td>
         <td><%= task.date %></td>
         <td><%= task.points %></td>
         <td><%= link_to 'Show', task %></td>
