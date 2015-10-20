@@ -5,6 +5,14 @@ class Student < ActiveRecord::Base
   default_scope { order(:last, :first) }
 
   def to_s
-    "#{number}: #{last}, #{first}"
+    "#{number}: #{last_first}"
+  end
+
+  def last_first
+    "#{last}, #{first}"
+  end
+
+  def first_last
+    "#{first} #{last}"
   end
 end
