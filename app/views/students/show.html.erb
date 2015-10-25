@@ -23,6 +23,41 @@ Created at <%= @student.created_at %>.
 Updated at <%= @student.updated_at %>.
 </p>
 
+<table>
+<tr>
+  <th>Task</th>
+  <th>Score</th>
+  <th>(Max)</th>
+  <th>Percent</th>
+</tr>
+<% @student.marks.each do |mark| %>
+  <tr>
+    <td><%= mark.task %></td>
+    <td align='right'>
+      <%= number_with_precision(mark.score, precision: 2) %>
+    </td>
+    <td align='right'>
+      (<%= mark.points %>)
+    </td>
+    <td align='right'>
+      <%= number_with_precision(mark.percent, precision: 2) %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td>Total</td>
+  <td align='right'>
+    <%= number_with_precision(@student.total_marks, precision: 2) %>
+  </td>
+  <td align='right'>
+    (<%= @student.total_max %>)
+  </td>
+  <td align='right'>
+    <%= number_with_precision(@student.total_percent, precision: 2) %>
+  </td>
+</tr>
+</table>
+
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Destroy', @student, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', students_path %>

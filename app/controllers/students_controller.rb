@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+    @students_by_level = @students.group_by(&:level)
   end
 
   # GET /students/1

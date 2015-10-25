@@ -1,13 +1,20 @@
 <h1>Students</h1>
 
+<% %w{ fail poor norm star gold }.each do |level| %>
+<%= level.upcase %>: <%= @students_by_level[level].count %><br />
+<% end %>
+
 <table>
   <tbody>
     <% @students.each.with_index(1) do |student, index| %>
-      <tr>
+      <%= content_tag :tr, class: student.level do %>
 	<td align="right"><%= index %>.</td>
         <td><%= link_to student.number, student %></td>
         <td><%= student.last_first %></td>
-      </tr>
+	<td align='right'>
+          <%= number_with_precision(student.total_percent, precision: 2) %>
+        </td>
+      <% end %>
     <% end %>
   </tbody>
 </table>
