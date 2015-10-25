@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020121344) do
+ActiveRecord::Schema.define(version: 20151022235919) do
 
   create_table "marks", force: true do |t|
     t.integer  "student_id"
     t.integer  "task_id"
-    t.integer  "score"
+    t.decimal  "score",      precision: 6, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
