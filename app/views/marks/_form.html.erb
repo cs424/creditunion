@@ -11,16 +11,11 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :student_id %>
+  <%= f.hidden_field :task_id %>
+
   <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
-  </div>
-  <div class="field">
-    <%= f.label :task_id %><br>
-    <%= f.text_field :task_id %>
-  </div>
-  <div class="field">
-    <%= f.label :score %><br>
+    <%= f.label :score %> (<%= @mark.task.points %>)<br>
     <%= f.number_field :score, step: 'any' %>
   </div>
   <div class="actions">
