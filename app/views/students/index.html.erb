@@ -1,7 +1,7 @@
 <h1>Students</h1>
 
 <% %w{ fail poor norm star gold }.each do |level| %>
-<%= level.upcase %>: <%= @students_by_level[level].count %><br />
+<%= level.upcase %>: <%= (@students_by_level[level] || []).count %><br />
 <% end %>
 
 <table>
