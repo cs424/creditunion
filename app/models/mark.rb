@@ -4,6 +4,10 @@ class Mark < ActiveRecord::Base
 
   delegate :points, to: :task
 
+  def to_s
+    score
+  end
+
   def percent
     100 * score/points
   end
