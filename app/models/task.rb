@@ -5,4 +5,8 @@ class Task < ActiveRecord::Base
   def to_s
     "#{name} #{number}"
   end
+
+  def short
+    "#{name[0,4]} #{number}"
+  end
 end
