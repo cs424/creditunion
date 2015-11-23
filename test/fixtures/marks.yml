@@ -1,11 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  student_id: 
-  task_id: 
-  score: 1
+  student: one 
+  task: one
+  score: 4
 
 two:
-  student_id: 
-  task_id: 
-  score: 1
+  student: one
+  task: two
+  score: 7
+
+onetwo:
+  student: two
+  task: one
+  score: 4
+
+twotwo:
+  student: two
+  task: two
+  score: 7

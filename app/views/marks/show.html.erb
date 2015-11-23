@@ -1,14 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Student:</strong>
-  <%= @mark.student %>
-</p>
-
-<p>
-  <strong>Task:</strong>
-  <%= @mark.task %>
-</p>
+<h3><%= link_to @mark.student, @mark.student %></h3>
+<h1><%= link_to @mark.task, @mark.task %></h1>
 
 <p>
   <strong>Score:</strong>
@@ -16,4 +9,4 @@
 </p>
 
 <%= link_to 'Edit', edit_mark_path(@mark) %> |
-<%= link_to 'Back', marks_path %>
+<%= link_to 'Back', root_path %>

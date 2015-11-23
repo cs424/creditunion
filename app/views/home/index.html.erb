@@ -1,4 +1,4 @@
-<h1>Notenfass</h1>
+<h1>CreditUnion</h1>
 
 <ul>
   <li><%= link_to 'Students', students_path %></li>
@@ -21,14 +21,14 @@
 </tr>
 <% @students.each do |student| %>
 <% marks = student.marks.index_by(&:task) %>
-<tr>
+<%= content_tag :tr, class: student.level do %>
   <th><%= student.number %></th>
   <% @tasks.each do |task| %>
-  <td align="right"><%= number_with_precision(marks[task].score, precision: 2) %></td>
+  <td align="right"><%= link_to number_with_precision(marks[task].score, precision: 2), marks[task] %></td>
 <% end %>
 	<td align='right'>
           <%= number_with_precision(student.total_percent, precision: 2) %>
         </td>
-</tr>
+<% end %>
 <% end %>
 </table>

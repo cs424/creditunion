@@ -15,6 +15,8 @@ class MarksController < ApplicationController
   # GET /marks/new
   def new
     @mark = Mark.new
+    @mark.student = Student.find(params[:student_id])
+    @mark.task = Task.find(params[:task_id])
   end
 
   # GET /marks/1/edit

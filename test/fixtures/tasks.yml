@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Practical
   date: 2015-10-19
-  points: 1
+  points: 5
   number: 1
 
 two:
-  name: MyString
+  name: Assignment
   date: 2015-10-19
-  points: 1
+  points: 10
   number: 2

@@ -12,7 +12,7 @@ class MarksControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, student_id: @mark.student, task_id: @mark.task 
     assert_response :success
   end
 
