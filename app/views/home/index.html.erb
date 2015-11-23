@@ -1,9 +1,12 @@
 <h1>CreditUnion</h1>
 
-<ul>
+<% if session[:user_id] %>
+  <ul>
   <li><%= link_to 'Students', students_path %></li>
   <li><%= link_to 'Tasks', tasks_path %></li>
-</ul>
+  </ul>
+  <%= button_to 'Logout', logout_path, :method => :delete   %>
+<% end %>
 
 <table>
 <tr>
@@ -24,7 +27,7 @@
 <%= content_tag :tr, class: student.level do %>
   <th><%= student.number %></th>
   <% @tasks.each do |task| %>
-  <td align="right"><%= link_to number_with_precision(marks[task].score, precision: 2), marks[task] %></td>
+  <td align="right"><%= link_to_if session[:user_id], number_with_precision(marks[task].score, precision: 2), marks[task] %></td>
 <% end %>
 	<td align='right'>
           <%= number_with_precision(student.total_percent, precision: 2) %>
