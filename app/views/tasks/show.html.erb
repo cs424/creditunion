@@ -10,7 +10,7 @@
 <table>
 <% @task.marks.each do |mark| %>
 <tr>
-  <td><%= mark.student %></td>
+  <td><%= link_to mark.student, mark.student %></td>
   <td align="right"><%= link_to mark.score, edit_mark_path(mark) %></td>
 </tr>
 <% end %>

@@ -32,9 +32,9 @@ Updated at <%= @student.updated_at %>.
 </tr>
 <% @student.marks.each do |mark| %>
   <tr>
-    <td><%= link_to mark.task, mark %></td>
+    <td><%= link_to mark.task, mark.task %></td>
     <td align='right'>
-      <%= number_with_precision(mark.score, precision: 2) %>
+      <%= link_to number_with_precision(mark.score, precision: 2), mark %>
     </td>
     <td align='right'>
       (<%= mark.points %>)
