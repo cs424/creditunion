@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Date</th>
+      <th>Course</th>
       <th>Task</th>
       <th>Points</th>
     </tr>
@@ -13,6 +14,7 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.date %></td>
+        <td><%= task.course %></td>
         <td><%= link_to task, task %></td>
         <td><%= task.points %></td>
       </tr>

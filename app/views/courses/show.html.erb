@@ -1,19 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @course.code %>
-</p>
+<h3>Courses</h3>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<h1><%= @course.code %> - <%= @course.name %></h1>
 
 <p>
   <strong>Year:</strong>
   <%= @course.year %>
 </p>
 
+<h4>Tasks</h4>
+
+<ul>
+  <% @course.tasks.each do |task| %>
+    <li>
+      <%= link_to task, task %>
+    </li>  
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', courses_path %>

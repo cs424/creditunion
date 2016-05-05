@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :course %><br>
+    <%= f.select :course_id, Course.all.map { |x| [x.code, x.id] }, { include_blank: true } %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>

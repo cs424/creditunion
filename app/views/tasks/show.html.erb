@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @task.date %></h3>
+<h3><%= link_to @task.course, @task.course %></h3>
 <h1><%= @task %></h1>
 
 <p>
+  Date: <%= @task.date %>.
   <%= @task.points %> points.
 </p>
 

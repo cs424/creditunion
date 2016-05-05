@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505140112) do
+ActiveRecord::Schema.define(version: 20160505141000) do
 
   create_table "courses", force: true do |t|
     t.string   "code"
     t.string   "name"
-    t.string   "year"
+    t.integer  "year",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -50,7 +50,10 @@ ActiveRecord::Schema.define(version: 20160505140112) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "number"
+    t.integer  "course_id"
   end
+
+  add_index "tasks", ["course_id"], name: "index_tasks_on_course_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

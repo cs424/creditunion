@@ -1,4 +1,17 @@
-<h1>Listing courses</h1>
+<h1>Courses</h1>
+
+<% @courses.group_by(&:year).each do |year, courses| %>
+  <h2><%= year %></h2>
+  <ul>
+    <% courses.each do |course| %>
+      <li>
+        <strong><%= link_to course.code, course %></strong>
+	<%= course.name %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 
 <table>
   <thead>

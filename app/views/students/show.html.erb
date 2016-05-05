@@ -30,9 +30,15 @@ Updated at <%= @student.updated_at %>.
   <th>(Max)</th>
   <th>Percent</th>
 </tr>
-<% @student.marks.each do |mark| %>
+<% @student.marks.group_by(&:course).each do |course, marks_by_course| %>
+<% marks_by_course.group_by(&:name).each do |name, marks| %>
+<% number = Task.where(course: course, name: name).count %>
+<% marks.each do |mark| %>
   <tr>
-    <td><%= link_to mark.task, mark.task %></td>
+    <td>
+      <%= mark.course %>
+      <%= link_to mark.task, mark.task %>
+    </td>
     <td align='right'>
       <%= link_to number_with_precision(mark.score, precision: 2), mark %>
     </td>
@@ -45,17 +51,15 @@ Updated at <%= @student.updated_at %>.
   </tr>
 <% end %>
 <tr>
-  <td>Total</td>
+  <th>Total %</th>
+  <td></td>
+  <td></td>
   <td align='right'>
-    <%= number_with_precision(@student.total_marks, precision: 2) %>
-  </td>
-  <td align='right'>
-    (<%= @student.total_max %>)
-  </td>
-  <td align='right'>
-    <%= number_with_precision(@student.total_percent, precision: 2) %>
+    <%= number_with_precision(marks.map(&:percent).sum/number, precision: 2) %>
   </td>
 </tr>
+<% end %>
+<% end %>
 </table>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
