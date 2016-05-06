@@ -4,6 +4,8 @@ class Task < ActiveRecord::Base
   belongs_to :course
   belongs_to :credit
 
+  delegate :name, to: :credit
+
   def to_s
     "#{name} #{number}"
   end

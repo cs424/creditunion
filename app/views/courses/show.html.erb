@@ -9,12 +9,12 @@
   <%= @course.year %>
 </p>
 
-<h4>Tasks</h4>
+<h4>Credits</h4>
 
 <ul>
-  <% @course.tasks.each do |task| %>
+  <% @course.credits.each do |credit| %>
     <li>
-      <%= link_to task, task %>
+      <%= link_to credit, credit %>
     </li>  
   <% end %>
 </ul>

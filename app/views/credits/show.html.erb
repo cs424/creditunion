@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @credit.name %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @credit.course %>
-</p>
+<h3><%= link_to @credit.course, @credit.course %> Credits</h3>
+<h1><%= @credit.name %></h1>
 
 <p>
   <strong>Weight:</strong>
   <%= @credit.weight %>
 </p>
+
+<ul>
+  <% @credit.tasks.each do |task| %>
+  <li>
+    <%= task.date %>
+    <%= link_to task, task %>
+  </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_credit_path(@credit) %> |
 <%= link_to 'Back', credits_path %>
