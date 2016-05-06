@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :credits
+
   resources :courses
 
   get 'admin' => 'admin#index'

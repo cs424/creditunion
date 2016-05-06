@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @credit.name %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @credit.course %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @credit.weight %>
+</p>
+
+<%= link_to 'Edit', edit_credit_path(@credit) %> |
+<%= link_to 'Back', credits_path %>
