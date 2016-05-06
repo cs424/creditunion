@@ -6,14 +6,28 @@
 
 <table>
   <tbody>
+    <tr>
+      <td></td>
+      <th>ID</th>
+      <th>Name</th>
+      <% Course.all.each do |course| %>
+      <th colspan=2>
+	<%= course %>
+      </th>
+      <% end %>
+    </tr>
     <% @students.each.with_index(1) do |student, index| %>
       <%= content_tag :tr, class: student.level do %>
-	<td align="right"><%= index %>.</td>
+        <td align="right"><%= index %>.</td>
         <td><%= link_to student.number, student %></td>
         <td><%= student.last_first %></td>
-	<td align='right'>
-          <%= number_with_precision(student.total_percent, precision: 2) %>
-        </td>
+        <% Course.all do |course| %>
+          <% student.all_marks(course).each do |percent| %>
+            <td align='right'>
+              <%= number_with_precision(percent, precision: 2) %>
+            </td>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>

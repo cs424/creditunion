@@ -58,6 +58,24 @@ Updated at <%= @student.updated_at %>.
     <%= number_with_precision(marks.map(&:percent).sum/number, precision: 2) %>
   </td>
 </tr>
+<tr>
+  <th>Total-1 %</th>
+  <td></td>
+  <td></td>
+  <td align='right'>
+    <% number -= 1 %>
+    <%= number_with_precision(marks.map(&:percent).sort.last(number).sum/number, precision: 2) %>
+  </td>
+</tr>
+<tr>
+  <th>Total-2 %</th>
+  <td></td>
+  <td></td>
+  <td align='right'>
+    <% number -= 1 %>
+    <%= number_with_precision(marks.map(&:percent).sort.last(number).sum/number, precision: 2) %>
+  </td>
+</tr>
 <% end %>
 <% end %>
 </table>

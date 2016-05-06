@@ -19,6 +19,15 @@ class Student < ActiveRecord::Base
     "#{first} #{last}"
   end
 
+  #  FIXME: make NAMES global
+  #  FIXME: find more efficient way to compute percentage
+  def all_marks(course)
+    ["Sheet", "Sem1Exam"].map do |name|
+      tasks = Task.where(course: course, name: name)
+      Mark.where(student: self, task: tasks).map(&:percent).sum/tasks.count
+    end
+  end
+  
   def total_marks
     marks.map(&:score).sum
   end
