@@ -1,10 +1,9 @@
 class Task < ActiveRecord::Base
   has_many :marks, dependent: :destroy
   has_many :students, through: :marks
-  belongs_to :course
   belongs_to :credit
 
-  delegate :name, to: :credit
+  delegate :course, :name, to: :credit
 
   def to_s
     "#{name} #{number}"
