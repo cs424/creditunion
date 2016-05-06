@@ -31,12 +31,13 @@ Updated at <%= @student.updated_at %>.
   <th>Percent</th>
 </tr>
 <% @student.marks.group_by(&:course).each do |course, marks_by_course| %>
-<% marks_by_course.group_by(&:name).each do |name, marks| %>
-<% number = Task.where(course: course, name: name).count %>
+<tr><th><%= course %></th></tr>
+<% marks_by_course.group_by(&:credit).each do |credit, marks| %>
+<tr><td><%= credit %></td></tr>
+<% number = credit.length %>
 <% marks.each do |mark| %>
   <tr>
     <td>
-      <%= mark.course %>
       <%= link_to mark.task, mark.task %>
     </td>
     <td align='right'>
@@ -55,25 +56,7 @@ Updated at <%= @student.updated_at %>.
   <td></td>
   <td></td>
   <td align='right'>
-    <%= number_with_precision(marks.map(&:percent).sum/number, precision: 2) %>
-  </td>
-</tr>
-<tr>
-  <th>Total-1 %</th>
-  <td></td>
-  <td></td>
-  <td align='right'>
-    <% number -= 1 %>
-    <%= number_with_precision(marks.map(&:percent).sort.last(number).sum/number, precision: 2) %>
-  </td>
-</tr>
-<tr>
-  <th>Total-2 %</th>
-  <td></td>
-  <td></td>
-  <td align='right'>
-    <% number -= 1 %>
-    <%= number_with_precision(marks.map(&:percent).sort.last(number).sum/number, precision: 2) %>
+    <%= number_with_precision(@student.mark_credit(credit), precision: 2) %>
   </td>
 </tr>
 <% end %>
