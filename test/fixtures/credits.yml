@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  course_id: 
+  course: one
   weight: 1
 
 two:
   name: MyString
-  course_id: 
+  course: two
   weight: 1
