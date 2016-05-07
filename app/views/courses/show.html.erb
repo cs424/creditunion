@@ -14,7 +14,7 @@
 <ul>
   <% @course.credits.each do |credit| %>
     <li>
-      <%= link_to credit, credit %>
+      (<%= credit.weight %>%) <%= link_to credit, credit %>
     </li>  
   <% end %>
 </ul>

@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :course_id %><br>
-    <%= f.text_field :course_id %>
+    <%= f.select :course_id, Course.all.map { |x| [x.code, x.id] }, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :weight %><br>

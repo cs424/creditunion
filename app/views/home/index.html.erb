@@ -2,36 +2,11 @@
 
 <% if session[:user_id] %>
   <ul>
-  <li><%= link_to 'Students', students_path %></li>
-  <li><%= link_to 'Tasks', tasks_path %></li>
+  <li><%= Student.all.count %> <%= link_to 'Students', students_path %></li>
+  <li><%= Course.all.count %> <%= link_to 'Courses', courses_path %></li>
+  <li><%= Credit.all.count %> <%= link_to 'Credits', credits_path %></li>
+  <li><%= Task.all.count %> <%= link_to 'Tasks', tasks_path %></li>
   </ul>
   <%= button_to 'Logout', logout_path, :method => :delete   %>
 <% end %>
 
-<table>
-<tr>
-  <td></td>
-  <% @tasks.each do |task| %>
-  <th><%= task.short %></th>
-  <% end %>
-  <th>Total %</th>
-</tr>
-<tr>
-  <td></td>
-  <% @tasks.each do |task| %>
-  <td align="right"><%= number_with_precision(task.points, precision: 2) %></td>
-  <% end %>
-</tr>
-<% @students.each do |student| %>
-<% marks = student.marks.index_by(&:task) %>
-<%= content_tag :tr, class: student.level do %>
-  <th><%= student.number %></th>
-  <% @tasks.each do |task| %>
-  <td align="right"><%= link_to_if session[:user_id], number_with_precision(marks[task].score, precision: 2), marks[task] %></td>
-<% end %>
-	<td align='right'>
-          <%= number_with_precision(student.total_percent, precision: 2) %>
-        </td>
-<% end %>
-<% end %>
-</table>

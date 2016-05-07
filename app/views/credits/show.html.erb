@@ -18,4 +18,5 @@
 </ul>
 
 <%= link_to 'Edit', edit_credit_path(@credit) %> |
+<%= link_to 'Destroy', @credit, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', credits_path %>

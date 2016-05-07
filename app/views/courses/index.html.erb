@@ -1,7 +1,7 @@
 <h1>Courses</h1>
 
 <% @courses.group_by(&:year).each do |year, courses| %>
-  <h2><%= year %></h2>
+  <h3><%= year %></h3>
   <ul>
     <% courses.each do |course| %>
       <li>
@@ -13,29 +13,6 @@
 <% end %>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.code %></td>
-        <td><%= course.name %></td>
-        <td><%= course.year %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 
