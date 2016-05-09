@@ -6,6 +6,22 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<% if session[:user_id] %>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav>
+      <%= link_to "credit_union", '#', id: "logo" %>
+  <ul class="nav navbar-nav navbar-right">
+  <li><%= link_to "#{Student.all.count} Students", students_path %></li>
+  <li><%= link_to "#{Course.all.count} Courses", courses_path %></li>
+  <li><%= link_to "#{Credit.all.count} Credits", credits_path %></li>
+  <li><%= link_to "#{Task.all.count} Tasks", tasks_path %></li>
+  </ul>
+</nav>
+    <%= button_to 'Logout', logout_path, method: :delete   %>
+  </div>
+</header>
+<% end %>
 <%= content_tag :body, class: "container " + controller.controller_name do %>
   <%= yield %>
   <%= debug(params) if Rails.env.development? %>

@@ -1,14 +1,5 @@
-<h1>CreditUnion</h1>
+<div class="center jumbotron">
+  <h1>CreditUnion</h1>
 
-<% if session[:user_id] %>
-<nav>
-  <ul class="nav  nav-stacked">
-  <li><%= link_to "#{Student.all.count} Students", students_path %></li>
-  <li><%= link_to "#{Course.all.count} Courses", courses_path %></li>
-  <li><%= link_to "#{Credit.all.count} Credits", credits_path %></li>
-  <li><%= link_to "#{Task.all.count} Tasks", tasks_path %></li>
-  </ul>
-</nav>
-<%= button_to 'Logout', logout_path, method: :delete   %>
-<% end %>
 
+</div>
