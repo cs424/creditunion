@@ -7,8 +7,8 @@ class Student < ActiveRecord::Base
   has_many :registrations
     has_many :courses, through: :registrations
   
-  validate :number, :first, :last, :username, presence: true
-  validate :number, :username, uniqueness: true
+  validates :number, :first, :last, :username, presence: true
+  validates :number, :username, uniqueness: true
 
   default_scope { order(:last, :first) }
 
