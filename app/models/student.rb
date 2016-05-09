@@ -2,8 +2,11 @@ class Student < ActiveRecord::Base
   has_many :marks, dependent: :destroy
     has_many :tasks, through: :marks
       has_many :credits, -> { distinct }, through: :tasks
-        has_many :courses, -> { distinct }, through: :credits
+        has_many :offers, -> { distinct }, through: :credits, source: :course
 
+  has_many :registrations
+    has_many :courses, through: :registrations
+  
   validate :number, :first, :last, :username, presence: true
   validate :number, :username, uniqueness: true
 
