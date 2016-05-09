@@ -8,11 +8,14 @@
   <%= @task.points %> points.
 </p>
 
-<table>
+<table class="table table-condensed table-hover">
 <% @task.marks.each do |mark| %>
 <tr>
   <td><%= link_to mark.student, mark.student %></td>
   <td align="right"><%= link_to mark.score, edit_mark_path(mark) %></td>
+  <%= content_tag :td, align: 'right', class: level(mark.percent) do %>
+    <%= number_with_precision(mark.percent, precision: 2) %>
+  <% end %>
 </tr>
 <% end %>
 </table>

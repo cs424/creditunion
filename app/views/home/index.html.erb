@@ -1,12 +1,14 @@
 <h1>CreditUnion</h1>
 
 <% if session[:user_id] %>
-  <ul>
-  <li><%= Student.all.count %> <%= link_to 'Students', students_path %></li>
-  <li><%= Course.all.count %> <%= link_to 'Courses', courses_path %></li>
-  <li><%= Credit.all.count %> <%= link_to 'Credits', credits_path %></li>
-  <li><%= Task.all.count %> <%= link_to 'Tasks', tasks_path %></li>
+<nav>
+  <ul class="nav  nav-stacked">
+  <li><%= link_to "#{Student.all.count} Students", students_path %></li>
+  <li><%= link_to "#{Course.all.count} Courses", courses_path %></li>
+  <li><%= link_to "#{Credit.all.count} Credits", credits_path %></li>
+  <li><%= link_to "#{Task.all.count} Tasks", tasks_path %></li>
   </ul>
-  <%= button_to 'Logout', logout_path, :method => :delete   %>
+</nav>
+<%= button_to 'Logout', logout_path, method: :delete   %>
 <% end %>
 

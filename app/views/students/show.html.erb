@@ -23,12 +23,12 @@ Created at <%= @student.created_at %>.
 Updated at <%= @student.updated_at %>.
 </p>
 
-<table>
+<table class="table">
 <tr>
   <th>Task</th>
-  <th>Score</th>
-  <th>(Max)</th>
-  <th>Percent</th>
+  <th style="text-align: right">Score</th>
+  <th style="text-align: right">(Max)</th>
+  <th style="text-align: right">Percent</th>
 </tr>
 <% @student.marks.group_by(&:course).each do |course, marks_by_course| %>
 <tr><th><%= course %></th></tr>

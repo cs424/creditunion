@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div class="page-header">
 <h3>Courses</h3>
 
 <h1><%= @course.code %> - <%= @course.name %></h1>
+</div>
 
 <p>
   <strong>Year:</strong>
@@ -11,14 +13,16 @@
 
 <h4>Credits</h4>
 
-<ul>
+<ul class="list-group">
   <% @course.credits.each do |credit| %>
-    <li>
+    <li class="list-group-item">
       (<%= credit.weight %>%) <%= link_to credit, credit %>
     </li>  
   <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', courses_path %>
+<div class="container">
+    <%= link_to 'Edit', edit_course_path(@course) %> |
+    <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Back', courses_path %></li>
+</div>
