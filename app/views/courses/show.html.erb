@@ -21,6 +21,37 @@
   <% end %>
 </ul>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <% @course.credits.each do |credit| %>
+        <th style="text-align: right"><%= credit.name_weight %></th>
+      <% end %>
+      <th style="text-align: right">Total (100%)</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @course.students.each do |student| %>
+  <tr>
+    <td><%= student.number %></td>
+    <td><%= student.name %></td>
+    <% @course.credits.each do |credit| %>
+      <% percent = student.mark_credit(credit) %>
+      <%= content_tag :td, align: 'right', class: level(percent) do %>
+        <%= number_with_precision(percent, precision: 2) %>
+      <% end %>
+    <% end %>
+    <% percent = student.mark_course(@course) %>
+    <%= content_tag :td, align: 'right', class: level(percent) do %>
+      <%= number_with_precision(percent, precision: 2) %>
+    <% end %>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <div class="container">
     <%= link_to 'Edit', edit_course_path(@course) %> |
     <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |

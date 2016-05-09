@@ -24,10 +24,18 @@ class Student < ActiveRecord::Base
     "#{first} #{last}"
   end
 
+  def name
+    last_first
+  end
+
   # FIXME: allow for discards
   def mark_credit(credit)
     marks = credit.marks.where(student: self)
     marks.map(&:percent).sum/credit.length
+  end
+
+  def mark_course(course)
+    course.credits.map { |credit| credit.weight * mark_credit(credit) }.sum / 100
   end
 
   def marks_course(course)

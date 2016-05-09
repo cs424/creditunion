@@ -7,6 +7,10 @@ class Credit < ActiveRecord::Base
     name
   end
 
+  def name_weight
+    "#{name} (#{weight}%)"
+  end
+
   # number of assignments, length of exam paper
   def length
     tasks.count
