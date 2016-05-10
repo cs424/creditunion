@@ -11,27 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509145722) do
+ActiveRecord::Schema.define(version: 20160510090350) do
 
-  create_table "courses", force: true do |t|
-    t.string   "code"
-    t.string   "name"
+  create_table "courses", force: :cascade do |t|
+    t.string   "code",       limit: 255
+    t.string   "name",       limit: 255
     t.integer  "year",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "credits", force: true do |t|
-    t.string   "name"
+  create_table "credits", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.integer  "course_id"
     t.integer  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "credit_id"
   end
 
   add_index "credits", ["course_id"], name: "index_credits_on_course_id"
+  add_index "credits", ["credit_id"], name: "index_credits_on_credit_id"
 
-  create_table "marks", force: true do |t|
+  create_table "marks", force: :cascade do |t|
     t.integer  "student_id"
     t.integer  "task_id"
     t.decimal  "score",      precision: 6, scale: 2, default: 0.0
@@ -42,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160509145722) do
   add_index "marks", ["student_id"], name: "index_marks_on_student_id"
   add_index "marks", ["task_id"], name: "index_marks_on_task_id"
 
-  create_table "registrations", force: true do |t|
+  create_table "registrations", force: :cascade do |t|
     t.integer  "student_id"
     t.integer  "course_id"
     t.datetime "created_at"
@@ -52,19 +54,19 @@ ActiveRecord::Schema.define(version: 20160509145722) do
   add_index "registrations", ["course_id"], name: "index_registrations_on_course_id"
   add_index "registrations", ["student_id"], name: "index_registrations_on_student_id"
 
-  create_table "students", force: true do |t|
-    t.string   "number"
-    t.string   "first"
-    t.string   "last"
-    t.string   "status"
+  create_table "students", force: :cascade do |t|
+    t.string   "number",         limit: 255
+    t.string   "first",          limit: 255
+    t.string   "last",           limit: 255
+    t.string   "status",         limit: 255
     t.text     "comment"
-    t.string   "username"
+    t.string   "username",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "registered_for"
+    t.string   "registered_for", limit: 255
   end
 
-  create_table "tasks", force: true do |t|
+  create_table "tasks", force: :cascade do |t|
     t.date     "date"
     t.decimal  "points",     precision: 6, scale: 2
     t.datetime "created_at"
@@ -75,9 +77,9 @@ ActiveRecord::Schema.define(version: 20160509145722) do
 
   add_index "tasks", ["credit_id"], name: "index_tasks_on_credit_id"
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "password_digest"
+  create_table "users", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "password_digest", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

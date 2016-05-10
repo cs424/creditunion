@@ -1,5 +1,7 @@
 class Credit < ActiveRecord::Base
   belongs_to :course
+  belongs_to :credit  # fallback!
+  
   has_many :tasks
     has_many :marks, through: :tasks
   

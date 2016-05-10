@@ -10,6 +10,8 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @students = @course.students.includes(:credits, :tasks, :marks)
+    @credits = @course.credits.includes(:tasks, :marks)
   end
 
   # GET /courses/new
@@ -64,7 +66,7 @@ class CoursesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
-      @course = Course.find(params[:id])
+      @course = Course.includes(:credits).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

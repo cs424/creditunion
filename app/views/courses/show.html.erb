@@ -11,15 +11,8 @@
   <%= @course.year %>
 </p>
 
-<h4>Credits</h4>
-
-<ul class="list-group">
-  <% @course.credits.each do |credit| %>
-    <li class="list-group-item">
-      (<%= credit.weight %>%) <%= link_to credit, credit %>
-    </li>  
-  <% end %>
-</ul>
+(Percentage marks in parentheses are marks from another course that might be
+added on to the current mark.)
 
 <table class="table">
   <thead>
@@ -28,12 +21,15 @@
       <th>Name</th>
       <% @course.credits.each do |credit| %>
         <th style="text-align: right"><%= credit.name_weight %></th>
+        <% if credit.credit %>
+          <th></th>
+        <% end %>
       <% end %>
       <th style="text-align: right">Total (100%)</th>
     </tr>
   </thead>
   <tbody>
-  <% @course.students.each do |student| %>
+  <% @students.each do |student| %>
   <tr>
     <td><%= student.number %></td>
     <td><%= student.name %></td>
@@ -41,6 +37,12 @@
       <% percent = student.mark_credit(credit) %>
       <%= content_tag :td, align: 'right', class: level(percent) do %>
         <%= number_with_precision(percent, precision: 2) %>
+      <% end %>
+      <% if credit.credit %>
+        <% percent = student.mark_credit(credit.credit) %>
+        <%= content_tag :td, align: 'right', class: level(percent) do %>
+          (<%= number_with_precision(percent, precision: 2) %>)
+        <% end %>
       <% end %>
     <% end %>
     <% percent = student.mark_course(@course) %>
