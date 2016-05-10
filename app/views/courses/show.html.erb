@@ -20,7 +20,7 @@ added on to the current mark.)
       <th>ID</th>
       <th>Name</th>
       <% @course.credits.each do |credit| %>
-        <th style="text-align: right"><%= credit.name_weight %></th>
+        <th style="text-align: right"><%= link_to credit.name_weight, credit %></th>
         <% if credit.credit %>
           <th></th>
         <% end %>
@@ -31,7 +31,7 @@ added on to the current mark.)
   <tbody>
   <% @students.each do |student| %>
   <tr>
-    <td><%= student.number %></td>
+    <td><%= link_to student.number, student %></td>
     <td><%= student.name %></td>
     <% @course.credits.each do |credit| %>
       <% percent = student.mark_credit(credit) %>
