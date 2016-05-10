@@ -28,10 +28,12 @@ class Student < ActiveRecord::Base
     last_first
   end
 
-  # FIXME: allow for discards
   def mark_credit(credit)
-    marks = credit.marks.where(student: self)
-    marks.map(&:percent).sum/credit.length
+    marks = credit.marks.where(student: self).map(&:percent).sort
+
+    # allow for discards
+    number = credit.length - credit.discard
+    marks.last(number).sum / number
   end
 
   def mark_course(course)
