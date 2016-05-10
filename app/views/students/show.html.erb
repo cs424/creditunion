@@ -68,7 +68,9 @@ Updated at <%= @student.updated_at %>.
 <% end %>
 </table>
 
-<%= console %>
+<div class="container">
+  <%= console if Rails.env.development? %>
+</div>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Destroy', @student, method: :delete, data: { confirm: 'Are you sure?' } %> |
