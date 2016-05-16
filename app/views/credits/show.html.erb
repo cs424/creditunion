@@ -13,10 +13,11 @@
   <%= @credit.discard %>
 </p>
 
-<ul>
+<ul class="list-group">
   <% @credit.tasks.each do |task| %>
-  <li>
+  <li class="list-group-item">
     <%= task.date %>
+    (<%= task.points %> points)
     <%= link_to task, task %>
   </li>
   <% end %>
