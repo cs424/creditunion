@@ -9,6 +9,11 @@
 </p>
 
 <p>
+  <strong>Courses:</strong>
+  <%= @student.courses.map(&:code).to_sentence %>
+</p>
+
+<p>
   <strong>Code:</strong>
   <%= @student.code %>
 </p>

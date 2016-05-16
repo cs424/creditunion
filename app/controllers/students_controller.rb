@@ -40,6 +40,8 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
+    params[:student][:course_ids] ||= []
+
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
@@ -69,6 +71,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:number, :first, :last, :status, :comment, :username, :registered_for, :code)
+      params.require(:student).permit(:number, :first, :last, :status, :comment, :username, :registered_for, :code, { course_ids: [] })
     end
 end

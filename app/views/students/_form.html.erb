@@ -13,7 +13,6 @@
 
   <h1><%= @student %></h1>
 
-  <!--
   <div class="field">
     <%= f.label :number %><br>
     <%= f.text_field :number %>
@@ -30,6 +29,14 @@
     <%= f.label :registered_for %><br>
     <%= f.text_field :registered_for %>
   </div>
+
+  <% Course.all.each do |course| %>
+  <label>
+    <%= check_box_tag "student[course_ids][]", course.id, f.object.courses.include?(course) %>
+    <%= course.code %>
+  </label>
+  <% end %>
+
   <div class="field">
     <%= f.label :code %><br>
     <%= f.text_field :code %>
@@ -38,17 +45,14 @@
     <%= f.label :status %><br>
     <%= f.text_field :status %>
   </div>
-  -->
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_area :comment, size: "60x15" %>
   </div>
-  <!--
   <div class="field">
     <%= f.label :username %><br>
     <%= f.text_field :username %>
   </div>
-  -->
   <div class="actions">
     <%= f.submit %>
   </div>
