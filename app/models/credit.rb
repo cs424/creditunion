@@ -4,7 +4,8 @@ class Credit < ActiveRecord::Base
   
   has_many :tasks
     has_many :marks, through: :tasks
-  
+      has_many :students, -> { distinct }, through: :marks
+    
   def to_s
     name
   end

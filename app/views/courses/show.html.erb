@@ -14,6 +14,50 @@
 (Percentage marks in parentheses are marks from another course that might be
 added on to the current mark.)
 
+<h2>Failing Students</h2>
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <% @course.credits.each do |credit| %>
+        <th style="text-align: right"><%= link_to credit.name_weight, credit %></th>
+        <% if credit.credit %>
+          <th></th>
+        <% end %>
+      <% end %>
+      <th style="text-align: right">Total (100%)</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @students.each do |student| %>
+  <% if student.mark_course(@course) < 40 or student.mark_credit(@course.credits.first) < 40 %>
+  <tr>
+    <td><%= link_to student.number, student %></td>
+    <td><%= student.name %></td>
+    <% @course.credits.each do |credit| %>
+      <% percent = student.mark_credit(credit) %>
+      <%= content_tag :td, align: 'right', class: level(percent) do %>
+        <%= number_with_precision(percent, precision: 2) %>
+      <% end %>
+      <% if credit.credit %>
+        <% percent = student.mark_credit(credit.credit) %>
+        <%= content_tag :td, align: 'right', class: level(percent) do %>
+          (<%= number_with_precision(percent, precision: 2) %>)
+        <% end %>
+      <% end %>
+    <% end %>
+    <% percent = student.mark_course(@course) %>
+    <%= content_tag :td, align: 'right', class: level(percent) do %>
+      <%= number_with_precision(percent, precision: 2) %>
+    <% end %>
+  </tr>
+  <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>All Students</h2>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
