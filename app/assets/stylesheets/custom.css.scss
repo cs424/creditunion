@@ -38,3 +38,10 @@ textarea {
   margin-top: 45px;
   @include box-sizing;
 }
+
+/* don't print link hrefs */
+@media print {
+  a[href]:after {
+    content: none
+  }
+}
